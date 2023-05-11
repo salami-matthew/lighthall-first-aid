@@ -11,6 +11,8 @@ import Layout from './components/Layout';
 import PersonalizedEmergencyPlan from './components/PersonalizedPlans';
 import Customize from './components/Customize';
 import { ToastContainer } from "react-toastify";
+import { AuthProvider } from './components/AuthContext';
+import PrivateRoutes from './components/PrivateRoutes';
 
 // code splitting, dynamic routes
 // const Handbook = lazy(() => import('./components/Handbook'));
@@ -22,22 +24,23 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
-      <Router>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/' element={<SignUp />} />
-
-          <Route path='/:userid' element={<Layout />}>
-            <Route path='dashboard' element={<Dashboard />} />
-            <Route path='handbook' element={<Handbook />} />
-            <Route path='plan' element={<PersonalizedEmergencyPlan />} />
-            <Route path='customize' element={<Customize />} />
-
-          </Route>
-        </Routes>
-      </Router>
-
+      <AuthProvider>
+        <ToastContainer />
+        <Router>
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<SignUp />} />
+            <Route element={<PrivateRoutes />}>
+              <Route path='/:userid' element={<Layout />}>
+                <Route path='dashboard' element={<Dashboard />} />
+                <Route path='handbook' element={<Handbook />} />
+                <Route path='plan' element={<PersonalizedEmergencyPlan />} />
+                <Route path='customize' element={<Customize />} />
+              </Route>
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
     </>
   )
 }

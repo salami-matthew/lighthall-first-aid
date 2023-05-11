@@ -168,9 +168,65 @@ const SignUp = () => {
         <div>
           <div className="header">
             <div className="logo"><img src={cross} /><h4>Health Guardian</h4></div>
-            <h1>Sign up</h1>
           </div>
 
+          <div className="carousel-container mt-1">
+            <Carousel className="carousel" variant="dark">
+              <Carousel.Item interval={3000}>
+                <div className="img-container w-100">
+                  <img
+                    className="carousel-img"
+                    src={bag}
+                    alt="First slide"
+                  />
+                </div>
+
+                <Carousel.Caption>
+                  <h3>Learn Essential First Aid Skills</h3>
+                  <p>Our app provides step-by-step instructions on how to respond to common emergency situations.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item interval={3000}>
+                <div className="img-container w-100">
+                  <img
+                    className="carousel-img"
+                    src={woman}
+                    alt="First slide"
+                  />
+                </div>
+
+                <Carousel.Caption>
+                  <h3>Stay Healthy</h3>
+                  <p>By customizing your profile with your health conditions, our app can provide personalized tips and guidance to help you stay safe and healthy.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item interval={3000}>
+                <div className="img-container w-100">
+                  <img
+                    className="carousel-img"
+                    src={cpr}
+                    alt="First slide"
+                  />
+                </div>
+
+                <Carousel.Caption>
+                  <h3>Be a life saver</h3>
+                  <p>
+                    Our app provides step-by-step guidance on how to respond to emergencies such as choking, cardiac arrest, burns, and more.
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
+          </div>
+          <div className="get-started">
+            <a href="#sign"><Button className="mb-5 mt-3 w-sm-50 fill-btn" >Get Started</Button></a>
+          </div>
+
+
+
+          <div className="header mt-5">
+            <h1>Sign up</h1>
+          </div>
           <Row className="justify-content-md-center">
             <Col md={5}>
               {error ? <div><Alert className="mt-3 mb-4" variant="danger">{error}</Alert></div> : ""}
@@ -227,62 +283,18 @@ const SignUp = () => {
                   Sign Up
                 </Button>
               </Form>
-              <p>
-                Already have an account? <Link to="/login">Log In</Link>.
-              </p>
+              <div id="sign">
+                <p className="mb-5">
+                  Already have an account? <Link to="/login">Log In</Link>.
+                </p>
+              </div>
+
             </Col>
           </Row>
 
 
 
-          <div className="carousel-container mt-5">
-            <Carousel className="carousel" variant="dark">
-              <Carousel.Item interval={3000}>
-                <div className="img-container w-100">
-                  <img
-                    className="carousel-img"
-                    src={bag}
-                    alt="First slide"
-                  />
-                </div>
 
-                <Carousel.Caption>
-                  <h3>Learn Essential First Aid Skills</h3>
-                  <p>Our app provides step-by-step instructions on how to respond to common emergency situations.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item interval={3000}>
-                <div className="img-container w-100">
-                  <img
-                    className="carousel-img"
-                    src={woman}
-                    alt="First slide"
-                  />
-                </div>
-
-                <Carousel.Caption>
-                  <h3>Stay Healthy</h3>
-                  <p>By customizing your profile with your health conditions, our app can provide personalized tips and guidance to help you stay safe and healthy.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item interval={3000}>
-                <div className="img-container w-100">
-                  <img
-                    className="carousel-img"
-                    src={cpr}
-                    alt="First slide"
-                  />
-                </div>
-
-                <Carousel.Caption>
-                  <h3>Be a life saver</h3>
-                  <p>
-                    Our app provides step-by-step guidance on how to respond to emergencies such as choking, cardiac arrest, burns, and more.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-          </div>
 
 
         </div>
