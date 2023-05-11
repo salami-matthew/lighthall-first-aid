@@ -1,0 +1,115 @@
+
+nav{
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 3rem;
+  background-color: 
+  #f73e81;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.links h6{
+  margin: 0;
+  color: white;
+}
+
+nav a{
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+
+}
+
+nav a:hover{
+  color: white;
+  scale: 1.3;
+}
+
+.nav-logo{
+  color: white;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+nav .logo{
+  font-size: 1.563rem;
+  font-weight: 600;
+  cursor: default;
+  color: #A5D7E8;
+  opacity: 0;
+  animation: slideRight 1s ease forwards ;
+}
+
+
+.toggle-button-container {
+  display: none;
+}
+
+
+.toggle-button{
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#open {
+  height: 100vh;
+}
+
+#open .links {
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 100px;
+}
+
+#open a {
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width:800px) {
+  .toggle-button-container{
+    display: block;
+  }
+  
+  nav{
+    justify-content: space-between;
+  }
+
+  .links{
+    flex-direction: column;
+    position: fixed;
+    /* right: -500px; */
+    right: 0;
+    top: 70px;
+    background-color:   #f73e81;
+    /* opacity: 0.95; */
+    width: 50%;
+    height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 15%;
+    display: none;
+    transition: 0.3s ease-in-out;
+  }
+
+  .mobile-links{
+    /* right: 0; /*slide animation*/
+    display: flex;
+  }
+
+}
