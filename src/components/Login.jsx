@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const [logInData, setLogInData] = useState({
     email: "",
     password: ""
@@ -26,11 +27,13 @@ const Login = () => {
   }, []);
 
   const handleLogin = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, logInData.email, logInData.password);
 
     } catch (error) {
+      setLoading(false);
       const errorCode = error.code;
       const errorMessage = error.message;
       if (errorCode === 'auth/wrong-password') {
@@ -90,8 +93,8 @@ const Login = () => {
 
               <Link to="/forgot">Forgot Password?</Link>
 
-              <Button className="mb-4 mt-3 w-100 fill-btn" type="submit">
-                Log In
+              <Button className="mb-4 mt-3 w-100 fill-btn" type="submit" disabled={loading}>
+                {loading ? "Logging In..." : "Log In"}
               </Button>
             </Form>
             <p>
