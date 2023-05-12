@@ -159,7 +159,7 @@ const Dashboard = () => {
         :
 
         <div className='dashboard'>
-          <h1>Welcome, {userData?.name}</h1>
+          <h1>Hi {userData?.name} 👋</h1>
           <Row>
             <div className='tip'>
               <p><BsShieldExclamation /> Today's health talk ({today || "Unknown"})</p>
@@ -172,13 +172,19 @@ const Dashboard = () => {
           <Row>
             <Col><div className='emergency-contacts mb-5'>
               <h5>{userData?.name}'s Emergency Contact Information</h5>
-              <h6>(Go to 'Settings' to update your emergency contact information and customize an emergency plan)</h6>
+              <h6>(Go to 'Settings' page to update your emergency contacts and update your custom emergency plan)</h6>
               <div className="contacts">
-                <p>Primary Emergency contact: {userData?.primaryContact?.name || "Unknown"}, {userData?.primaryContact?.phone || "Unknown"}</p>
-                <p>Secondary Emergency contact: {userData?.secondaryContact?.name || "Unknown"}, {userData?.secondaryContact?.phone || "Unknown"}</p>
+                <Row>
+                  <p>Primary Emergency contact:
+                    {userData?.primaryContact?.name || "Unknown"}, {userData?.primaryContact?.phone || "Unknown"}</p>
+                </Row>
+                <Row>
+                  <p>Secondary Emergency contact: {userData?.secondaryContact?.name || "Unknown"}, {userData?.secondaryContact?.phone || "Unknown"} </p>
+                </Row>
               </div>
 
-            </div></Col>
+            </div>
+            </Col>
             <Col><div className='emergency-service'>
               <h5 className='mb-1'>Nearby emergency services</h5>
               {emergencyServ?.length > 0 ? (

@@ -26,13 +26,22 @@ body{
   background-color: white;
 }
 
+
+.page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /*  */
 .carousel-img{
-  margin-bottom: 200px;
-  width: 15rem;
-  height: 15rem;
+  margin-bottom: 12rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 50%;
 }
+
 
 .carousel-container{
   width: 100%;
@@ -48,6 +57,7 @@ body{
   gap: 2px;
   height: 1.3rem;  
   border: none;
+  margin-bottom: 1rem;
 }
 
 .logo img{
@@ -72,7 +82,7 @@ h1{
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .loader{
@@ -163,6 +173,7 @@ button, input{
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  padding: 2rem;
 }
 
 .more-info{
@@ -182,4 +193,8 @@ button, input{
 .get-started{
   display: grid;
   place-items: center;
+}
+
+.general-plan{
+  line-height: 2;
 }

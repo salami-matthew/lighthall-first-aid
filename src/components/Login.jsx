@@ -45,56 +45,61 @@ const Login = () => {
 
   return (
     <div className='container'>
-      <div className="header">
-        <div className="logo"><img src={cross} /><h4>Health Guardian</h4></div>
-        <h1>Welcome Back!</h1>
-      </div>
-      <Row className="justify-content-md-center">
-        <Col md={5}>
-          {error ? <div><Alert className="mt-3 mb-4" variant="danger">{error}</Alert></div> : ""}
-          <Form className="form w-sm-50" onSubmit={handleLogin}>
-            {/*  */}
-            <Form.Group className="mb-3 form-grp" controlId="email">
-              <Form.Label>Email: </Form.Label>
-              <Form.Control
-                required
-                type="email"
-                placeholder="Email"
-                autoComplete="off"
-                value={logInData.email}
-                onChange={(e) =>
-                  setLogInData({
-                    ...logInData,
-                    email: e.target.value,
-                  })}
-              />
-            </Form.Group>
+      <div className='page'>
+        <div className="header">
+          <div className="logo"><img src={cross} /><h4>Health Guardian</h4></div>
+          <h1>Welcome Back!</h1>
+        </div>
+        <Row className="justify-content-md-center">
+          <Col md={5}>
+            {error ? <div><Alert className="mt-3 mb-4" variant="danger">{error}</Alert></div> : ""}
+            <Form className="form w-sm-50" onSubmit={handleLogin}>
+              {/*  */}
+              <Form.Group className="mb-3 form-grp" controlId="email">
+                <Form.Label>Email: </Form.Label>
+                <Form.Control
+                  required
+                  type="email"
+                  placeholder="Email"
+                  autoComplete="off"
+                  value={logInData.email}
+                  onChange={(e) =>
+                    setLogInData({
+                      ...logInData,
+                      email: e.target.value,
+                    })}
+                />
+              </Form.Group>
 
-            {/* password */}
-            <Form.Group className="mb-3 form-grp" controlId="password">
-              <Form.Label>Password: </Form.Label>
-              <Form.Control
-                required
-                type="password"
-                autoComplete="off"
-                placeholder='Password'
-                value={logInData.password}
-                onChange={(e) =>
-                  setLogInData({
-                    ...logInData,
-                    password: e.target.value,
-                  })}
-              />
-            </Form.Group>
-            <Button className="mb-4 mt-3 w-100 fill-btn" type="submit">
-              Log In
-            </Button>
-          </Form>
-          <p>
-            Don't have an account? <Link to="/">Sign up here</Link>.
-          </p>
-        </Col>
-      </Row>
+              {/* password */}
+              <Form.Group className="mb-3 form-grp" controlId="password">
+                <Form.Label>Password: </Form.Label>
+                <Form.Control
+                  required
+                  type="password"
+                  autoComplete="off"
+                  placeholder='Password'
+                  value={logInData.password}
+                  onChange={(e) =>
+                    setLogInData({
+                      ...logInData,
+                      password: e.target.value,
+                    })}
+                />
+              </Form.Group>
+
+              <Link to="/forgot">Forgot Password?</Link>
+
+              <Button className="mb-4 mt-3 w-100 fill-btn" type="submit">
+                Log In
+              </Button>
+            </Form>
+            <p>
+              Don't have an account? <Link to="/">Sign up here</Link>.
+            </p>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 };

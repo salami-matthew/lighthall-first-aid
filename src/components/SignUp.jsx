@@ -7,12 +7,13 @@ import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import bag from "../assets/bag.png"
 import woman from "../assets/woman.png"
-import cpr from "../assets/cpr.png"
+import plan from "../assets/plan.png"
 import cross from "../assets/cross.png"
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const SignUp = () => {
+  const [loading, setLoading] = useState(false);
   const [signUpData, setSignUpData] = useState({
     name: "",
     email: "",
@@ -126,6 +127,7 @@ const SignUp = () => {
       });
 
     } catch (error) {
+      setLoading(false);
       if (error.code === "auth/email-already-in-use") {
         setError("Email already in use");
       } else if (error.message === "Password must be at least 6 characters long") {
@@ -142,6 +144,7 @@ const SignUp = () => {
 
 
   const handleSignup = async (e) => {
+    setLoading(true);
     e.preventDefault();
     Promise.all([createUser()]).then(() => {
       // Wait for user data to be stored in Firestore before redirecting to dashboard
@@ -165,7 +168,7 @@ const SignUp = () => {
 
     <>
       <div className="container">
-        <div>
+        <div className="page">
           <div className="header">
             <div className="logo"><img src={cross} /><h4>Health Guardian</h4></div>
           </div>
@@ -175,7 +178,7 @@ const SignUp = () => {
               <Carousel.Item interval={3000}>
                 <div className="img-container w-100">
                   <img
-                    className="carousel-img"
+                    className="img-lg carousel-img"
                     src={bag}
                     alt="First slide"
                   />
@@ -183,36 +186,37 @@ const SignUp = () => {
 
                 <Carousel.Caption>
                   <h3>Learn Essential First Aid Skills</h3>
-                  <p>Our app provides step-by-step instructions on how to respond to common emergency situations.</p>
+                  <p>Our app provides access to general first-aid tips</p>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item interval={3000}>
                 <div className="img-container w-100">
                   <img
-                    className="carousel-img"
+                    className=" img-lg carousel-img"
                     src={woman}
-                    alt="First slide"
+                    alt="Second slide"
                   />
                 </div>
 
                 <Carousel.Caption>
                   <h3>Stay Healthy</h3>
-                  <p>By customizing your profile with your health conditions, our app can provide personalized tips and guidance to help you stay safe and healthy.</p>
+                  <p>We provide personalized tips and guidance to help you stay safe and healthy.</p>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item interval={3000}>
                 <div className="img-container w-100">
                   <img
                     className="carousel-img"
-                    src={cpr}
-                    alt="First slide"
+                    src={plan}
+                    alt="Third slide"
                   />
                 </div>
 
                 <Carousel.Caption>
-                  <h3>Be a life saver</h3>
+                  <h3>Create a plan</h3>
                   <p>
-                    Our app provides step-by-step guidance on how to respond to emergencies such as choking, cardiac arrest, burns, and more.
+                    Create your own personal emergency plan with
+                    step-by-step guidance based on your health conditions.
                   </p>
                 </Carousel.Caption>
               </Carousel.Item>
@@ -222,10 +226,10 @@ const SignUp = () => {
             <a href="#sign"><Button className="mb-5 mt-3 w-sm-50 fill-btn" >Get Started</Button></a>
           </div>
 
-
-
+        </div>
+        <div className="page">
           <div className="header mt-5">
-            <h1>Sign up</h1>
+            <h1 id="sign">Sign up</h1>
           </div>
           <Row className="justify-content-md-center">
             <Col md={5}>
@@ -279,23 +283,18 @@ const SignUp = () => {
                       })}
                   />
                 </Form.Group>
-                <Button className="mb-4 mt-3 w-100 fill-btn" type="submit">
-                  Sign Up
+                <Button className="mb-4 mt-3 w-100 fill-btn" type="submit" disabled={loading}>
+                  {loading ? "Signing up..." : "Sign Up"}
                 </Button>
               </Form>
-              <div id="sign">
-                <p className="mb-5">
+              <div >
+                <p>
                   Already have an account? <Link to="/login">Log In</Link>.
                 </p>
               </div>
 
             </Col>
           </Row>
-
-
-
-
-
 
         </div>
       </div>

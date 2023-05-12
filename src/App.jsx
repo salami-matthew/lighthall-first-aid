@@ -13,6 +13,7 @@ import Customize from './components/Customize';
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from './components/AuthContext';
 import PrivateRoutes from './components/PrivateRoutes';
+import ForgotPassword from './components/ForgotPassword';
 
 // code splitting, dynamic routes
 // const Handbook = lazy(() => import('./components/Handbook'));
@@ -29,6 +30,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/login' element={<Login />} />
+            <Route path='/forgot' element={<ForgotPassword />} />
             <Route path='/' element={<SignUp />} />
             <Route element={<PrivateRoutes />}>
               <Route path='/:userid' element={<Layout />}>

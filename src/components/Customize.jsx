@@ -58,35 +58,40 @@ const Customize = () => {
 
   async function saveUserData(e) {
     e.preventDefault();
-    await updateDoc(doc(db, "users", userid), {
-      name: userData.name,
-      age: userData.age,
-      gender: userData.gender,
-      alcoholic: userData.alcoholic,
-      pregnant: userData.pregnant,
-      primaryContact: {
-        name: userData.primaryContact.name,
-        phone: userData.primaryContact.phone,
-        relationship: userData.primaryContact.relationship
-      },
-      secondaryContact: {
-        name: userData.secondaryContact.name,
-        phone: userData.secondaryContact.phone,
-        relationship: userData.secondaryContact.relationship
-      },
-      medicalConditions: {
-        anaphylaxis: userData.medicalConditions.anaphylaxis,
-        asthma: userData.medicalConditions.asthma,
-        diabetes: userData.medicalConditions.diabetes,
-        heartDisease: userData.medicalConditions.heartDisease,
-        epilepsy: userData.medicalConditions.epilepsy,
-        hypertension: userData.medicalConditions.hypertension,
-        stroke: userData.medicalConditions.stroke,
-        allergy: userData.medicalConditions.allergy
-      }
-    });
-    toast.success("Saved Successfully!");
-    navigate(`/${userid}/plan`, { state: userid });
+    try {
+      await updateDoc(doc(db, "users", userid), {
+        name: userData.name,
+        age: userData.age,
+        gender: userData.gender,
+        alcoholic: userData.alcoholic,
+        pregnant: userData.pregnant,
+        primaryContact: {
+          name: userData.primaryContact.name,
+          phone: userData.primaryContact.phone,
+          relationship: userData.primaryContact.relationship
+        },
+        secondaryContact: {
+          name: userData.secondaryContact.name,
+          phone: userData.secondaryContact.phone,
+          relationship: userData.secondaryContact.relationship
+        },
+        medicalConditions: {
+          anaphylaxis: userData.medicalConditions.anaphylaxis,
+          asthma: userData.medicalConditions.asthma,
+          diabetes: userData.medicalConditions.diabetes,
+          heartDisease: userData.medicalConditions.heartDisease,
+          epilepsy: userData.medicalConditions.epilepsy,
+          hypertension: userData.medicalConditions.hypertension,
+          stroke: userData.medicalConditions.stroke,
+          allergy: userData.medicalConditions.allergy
+        }
+      });
+      toast.success("Saved Successfully!");
+      navigate(`/${userid}/plan`, { state: userid });
+    } catch (error) {
+      toast.error("Oops, something went wrong")
+    }
+
   }
 
   return (
