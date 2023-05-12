@@ -7,7 +7,7 @@ import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import bag from "../assets/bag.png"
 import woman from "../assets/woman.png"
-import plan from "../assets/plan.png"
+import plan from "../assets/Plan.png"
 import cross from "../assets/cross.png"
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
